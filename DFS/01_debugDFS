@@ -1,1 +1,39 @@
+import networkx as nx
+import matplotlib.pyplot as plt
 
+# Crear un grafo no dirigido
+G = nx.Graph()
+
+# Definir las conexiones (aristas) según la imagen
+conexiones = [
+    ('S', 'A'), ('S', 'D'), 
+    ('A', 'B'), ('A', 'D'), 
+    ('B', 'C'), ('B', 'E'), 
+    ('D', 'E'), 
+    ('E', 'F'), 
+    ('F', 'G')
+]
+
+# Añadir las conexiones al grafo (los nodos se añaden automáticamente)
+G.add_edges_from(conexiones)
+
+# Especificar las coordenadas de cada nodo para mantener la forma original
+posiciones = {
+    'S': (0, 1),
+    'A': (1, 2),
+    'D': (1, 0),
+    'B': (2, 2),
+    'E': (2, 0),
+    'C': (3, 2),
+    'F': (3, 0),
+    'G': (3.5, 1)
+}
+
+# Dibujar el grafo con estilos similares
+plt.figure(figsize=(8, 4))
+nx.draw(G, pos=posiciones, with_labels=True, 
+        node_color='white', edgecolors='black', 
+        node_size=2500, font_size=16)
+
+# Mostrar el resultado
+plt.show()
